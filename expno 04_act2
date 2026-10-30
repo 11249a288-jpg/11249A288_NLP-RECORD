@@ -1,0 +1,33 @@
+# DFA accepting ab*
+
+def dfa(string):
+
+    state = "q0"
+
+    for symbol in string:
+
+        if state == "q0":
+            if symbol == "a":
+                state = "q1"
+            else:
+                state = "q2"
+
+        elif state == "q1":
+            if symbol == "b":
+                state = "q1"
+            else:
+                state = "q2"
+
+        else:
+            state = "q2"
+
+    if state == "q1":
+        return "Accepted"
+    else:
+        return "Rejected"
+
+
+test = ["a", "ab", "abb", "abbb", "b", "aa"]
+
+for string in test:
+    print(string, ":", dfa(string))
